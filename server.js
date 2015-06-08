@@ -2,6 +2,7 @@
 
 var Hapi = require('hapi'),
 		config = require('./config.json'),
+		routes = require('./lib/routes'),
 
 		server = new Hapi.Server();
 
@@ -15,15 +16,7 @@ server.connection({
 	}
 });
 
-server.route(
-	{
-		method: 'GET',
-		path: '/api/project/new-client',
-		handler: function (request, reply) {
-			reply('ok');
-		}
-	}
-);
+server.route(routes);
 
 server.start(function () {
   console.log('Server running at:', server.info.uri);
