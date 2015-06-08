@@ -1,0 +1,41 @@
+{
+  "name": "strataba-redux",
+  "version": "0.0.0",
+  "description": "lpm",
+  "author": {
+    "name": "BenO",
+    "email": "ben@law451.com",
+    "url": "law451.com"
+  },
+  "repository": "ironcoconut/strataba-redux",
+  "license": "copyright (c) 2015 BenO",
+  "files": [
+    "index.js"
+  ],
+  "keywords": [
+    "strataba-redux",
+    ""
+  ],
+  "dependencies": {
+    "hapi": "^8.6.1",
+    "joi": "^6.4.3",
+    "lodash": "^3.9.3",
+    "mongoose": "^4.0.5",
+    "q": "^1.4.1"
+  },
+  "devDependencies": {
+    "chai": "^3.0.0",
+    "grunt-cli": "^0.1.13",
+    "grunt-contrib-jshint": "^0.11.0",
+    "grunt-contrib-nodeunit": "^0.4.1",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-mocha-cli": "^1.12.0",
+    "jshint-stylish": "^1.0.1",
+    "load-grunt-tasks": "^3.1.0",
+    "mocha": "^2.2.5",
+    "time-grunt": "^1.1.0"
+  },
+  "scripts": {
+    "test": "grunt"
+  }
+}
