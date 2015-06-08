@@ -5,8 +5,6 @@ var Hapi = require('hapi'),
 
 		server = new Hapi.Server();
 
-console.log('config', config);
-
 server.connection({ 
 	port: config.apiPort,
 	host: config.apiHost,
@@ -17,15 +15,6 @@ server.connection({
 	}
 });
 
-server.route(
-	{
-		method: 'GET',
-		path: '/',
-		handler: function (request, reply) {
-			reply('ok');
-		}
-	}
-);
 server.route(
 	{
 		method: 'GET',

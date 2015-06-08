@@ -10,11 +10,10 @@
   "repository": "ironcoconut/strataba-redux",
   "license": "copyright (c) 2015 BenO",
   "files": [
-    "index.js"
+    "server.js"
   ],
   "keywords": [
-    "strataba-redux",
-    ""
+    "strataba-redux"
   ],
   "dependencies": {
     "hapi": "^8.6.1",
