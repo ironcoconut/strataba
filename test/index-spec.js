@@ -2,6 +2,7 @@
 
 var config = require('../config.json'),
 		apiUrl = config.apiUrl,
+		_ = require('lodash'),
 		assert = require('chai').assert,
 		request = require('request');
 
@@ -35,13 +36,17 @@ describe('API', function() {
 							slug: 'issue-description',
 							type: 'text'
 						}
-					];
+					],
+					sorted = [],
+					data = JSON.parse(body).data;
 
-			console.log('error', error);
-			console.log('body', body);
 			assert.notOk(error, 'Error exists');
 			assert.deepEqual(response.statusCode, 200, 'Wrong status code');
-			assert.deepEqual(body, expected, 'body did not match expected');
+			assert.deepEqual(data.length, expected.length, 'Wrong number of elements');
+			data.forEach(function(item, i) {
+				var match = _.find(expected, {slug: item.slug});
+				assert.deepEqual(item, match, 'corrupted property');
+			});
 			done();
 		});
 	});
