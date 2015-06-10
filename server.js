@@ -1,12 +1,18 @@
 'use strict';
 
-var Hapi = require('hapi'),
+var Strataba = require('./lib/strataba'),
 		config = require('./config.json'),
-		routes = require('./lib/routes'),
+		models = ['blank', 'project'],
 
-		server = new Hapi.Server();
+		app = new Strataba();
 
-server.connection({ 
+app.db.connect(config.db.development)
+
+models.forEach(function(model) {
+	app.constructors.model({name: model});
+});
+
+app.server.connection({ 
 	port: config.apiPort,
 	host: config.apiHost,
 	routes: {
@@ -16,8 +22,6 @@ server.connection({
 	}
 });
 
-server.route(routes);
-
-server.start(function () {
-  console.log('Server running at:', server.info.uri);
+app.server.start(function () {
+  console.log('Server running at:', app.server.info.uri);
 });

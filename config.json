@@ -2,5 +2,8 @@
 	"apiUrl": "http://localhost:1212/",
 	"apiPort": "1212",
 	"apiHost": "localhost",
-	"appUrl": "http://localhost:1211/"
+	"appUrl": "http://localhost:1211/",
+	"db": {
+    "development": "mongodb://localhost/sb-dev"
+	}
 }
