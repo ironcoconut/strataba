@@ -51,10 +51,7 @@ app.server.route([
 
 			Project.find({'slug':slug}).then(function(data) {
 				project = data[0];
-				var blanks = project.cards.map(function(blank) {
-					return Blank.find({'slug': blank});
-				});
-				return Q.all(blanks);
+				return Blank.findBySlugs(project.cards);
 			}).then(function(data) {
 				project.cards = data;
 				reply(project);
