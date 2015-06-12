@@ -22,8 +22,6 @@ app.server.connection({
 	}
 });
 
-console.log('models', app.models);
-
 app.server.route([
 	{
 		method: 'GET',
@@ -38,6 +36,31 @@ app.server.route([
 		handler: function (request, reply) {
 			app.models.project.find().then(function(data) {
 				reply(data);
+			});
+		}
+	},
+	{ 
+		method: 'GET',
+		path: '/api/projects/{slug}',
+		handler: function (request, reply) {
+			var slug = encodeURIComponent(request.params.slug),
+					project = '',
+					Project = app.models.project,
+					Blank = app.models.blank,
+					Q = require('q');
+
+			Project.find({'slug':slug}).then(function(data) {
+				project = data[0];
+				var blanks = project.cards.map(function(blank) {
+					return Blank.find({'slug': blank});
+				});
+				return Q.all(blanks);
+			}).then(function(data) {
+				project.cards = data;
+				reply(project);
+			}).catch(function(error) {
+				console.log('Error getting project %s: %s', slug, error);
+				reply('Error');
 			});
 		}
 	}
