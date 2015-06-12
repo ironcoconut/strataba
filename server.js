@@ -22,6 +22,27 @@ app.server.connection({
 	}
 });
 
+console.log('models', app.models);
+
+app.server.route([
+	{
+		method: 'GET',
+		path: '/',
+		handler: function (request, reply) {
+			reply('make requests at /api');
+		}
+	},
+	{
+		method: 'GET',
+		path: '/api/projects',
+		handler: function (request, reply) {
+			app.models.project.find().then(function(data) {
+				reply(data);
+			});
+		}
+	}
+]);
+
 app.server.start(function () {
   console.log('Server running at:', app.server.info.uri);
 });
