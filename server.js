@@ -9,11 +9,11 @@ var Strataba = require('./lib/strataba'),
 app.db.connect(config.db.development);
 
 app.server.connection({ 
-	port: config.apiPort,
-	host: config.apiHost,
+	port: config.api.port,
+	host: config.api.host,
 	routes: {
 		cors: {
-			origin: [config.appUrl]
+			origin: [config.app.url]
 		}
 	}
 });
