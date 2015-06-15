@@ -2,7 +2,7 @@
 
 var Strataba = require('./lib/strataba'),
 		config = require('./config.json'),
-		models = ['blank', 'project'],
+		models = ['blank', 'project', 'party'],
 
 		app = new Strataba();
 
